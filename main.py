@@ -4,10 +4,12 @@ adjectives = json.load(open('adjectives.json'))
 def AdjectiveAcrostic(string):
     choices = []
     for letter in string.upper():
-        for word in adjectives:
-            if word.startswith(letter): choices.append(word)
-        print(f"{letter.upper()} - {(random.choice(choices))}")
-        choices.clear()
+        if letter.isalpha():
+            for word in adjectives:
+                if word.startswith(letter): choices.append(word)
+            print(f"{letter.upper()} - {(random.choice(choices))}")
+            choices.clear()
+        else: print()
     
 while True:
     string = input("Enter word: ")
